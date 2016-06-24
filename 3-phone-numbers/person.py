@@ -3,18 +3,18 @@ class Person():
     _phone_number = None
 
     def __init__(self, name, phone_number):
-        # implent this method
-        pass  # delete this
+        self._name = name
+        self._phone_number = phone_number
 
     def is_phone_number_matching(self, input_phone_number):
-        # implent this method
-        pass  # delete this
+        self._phone_number = Person.normalize_phone_number(self._phone_number)
+        return self._phone_number == input_phone_number
 
     def get_name(self):
-        # implent this method
-        pass  # delete this
+        return self._name
 
     @staticmethod
     def normalize_phone_number(phone_number):
-        # implent this method
-        pass  # delete this
+        phone_number = phone_number.replace(" ", "")
+        normalized_phone_number = phone_number.replace("-", "")
+        return normalized_phone_number

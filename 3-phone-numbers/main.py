@@ -4,23 +4,33 @@ from person import Person
 
 
 def open_csv(file_name):
-    # implent this function
-    pass  # delete this
+    with open(file_name) as csvfile:
+        filereader = csv.reader(csvfile)
+        person_list = []
+        for row in filereader:
+            person_list.append(Person(row[0], row[1]))
+        return person_list
 
 
 def get_csv_file_name(argv_list):
-    # implent this function
-    pass  # delete this
+    try:
+        return argv_list[1]
+    except:
+        return None
 
 
 def format_output(person):
-    # implent this function
-    pass  # delete this
+    if not person:
+        return "No match found."
+    return "This number belongs to: {}".format(person.get_name())
 
 
 def get_person_by_phone_number(person_list, user_input_phone_number):
-    # implent this function
-    pass  # delete this
+    phone_number = Person.normalize_phone_number(user_input_phone_number)
+    for element in person_list:
+        if element.is_phone_number_matching(phone_number):
+            return element
+    return None
 
 
 def main():
